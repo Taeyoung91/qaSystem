@@ -56,8 +56,8 @@ public class ProjectDaoImpl implements ProjectDao {
 	public int countPaging(Criteria criteria) throws Exception {
 		
 		return sqlSession.selectOne(namespace +".countPaging", criteria);
-	}
-
+	} 
+ 
 	@Override
 	public List<Project> listSearch(SearchCriteria criteria) throws Exception {
 		return sqlSession.selectList(namespace + ".listSearch", criteria);

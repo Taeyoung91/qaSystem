@@ -25,11 +25,15 @@ public class LoginSuccessInterceptor extends HandlerInterceptorAdapter {
 		if(user != null) {
 			logger.info("new login success");
 			session.setAttribute(LOGIN, user);
+			session.removeAttribute("msg");;
 			Object dest = session.getAttribute("dest");
 			response.sendRedirect(dest != null ? (String) dest : "/");
+		}else {
+			logger.info("login failed");
+			session.setAttribute("msg", "FAIL");
+			response.sendRedirect("/user/login");
 		}
 	}
-	
 	
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception{
@@ -38,6 +42,7 @@ public class LoginSuccessInterceptor extends HandlerInterceptorAdapter {
 		if(session.getAttribute(LOGIN) != null) {
 			logger.info("clear login data before");
 			session.removeAttribute(LOGIN);
+			session.removeAttribute("msg");
 		}
 		return true;
 	}

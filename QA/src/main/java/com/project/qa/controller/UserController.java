@@ -86,6 +86,5 @@ public class UserController {
 		model.addAttribute("attrPrjArr", attrPrjArr);
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("keyword", key);
-		
 	}
 }

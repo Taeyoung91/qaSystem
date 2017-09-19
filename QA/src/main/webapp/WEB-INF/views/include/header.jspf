@@ -7,10 +7,12 @@
 <meta
 	content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
 	name='viewport'>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- Bootstrap 3.3.4 -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <!-- Font Awesome Icons -->
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"
@@ -105,13 +107,13 @@
 					<div class="form-group">
 						<label for="START_DATE"> <span
 							class="glyphicon glyphicon-pushpin"></span>&nbsp;START DATE
-						</label> <input type="text" class="form-control" id="START_DATE" name="START_DATE"
+						</label> <input type="text" class="form-control date" id="START_DATE" name="START_DATE"
 							placeholder="INSERT START DATE">
 					</div>
 					<div class="form-group">
 						<label for="END_DATE"> <span
 							class="glyphicon glyphicon-pushpin"></span>&nbsp;END DATE
-						</label> <input type="text" class="form-control" id="END_DATE" name="END_DATE"
+						</label> <input type="text" class="form-control date" id="END_DATE" name="END_DATE"
 							placeholder="INSERT END DATE">
 					</div>
 					<div class="form-group">
@@ -221,6 +223,9 @@
 				$(location).attr("href", "/user/login");
 				return true;
 			}
+		});
+		$(".date").datepicker({
+			dateFormat : 'yy-mm-dd'
 		});
 	});
 </script>

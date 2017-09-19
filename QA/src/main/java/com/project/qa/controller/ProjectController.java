@@ -77,7 +77,7 @@ public class ProjectController {
 		String tmpPrjCodeArr[] = project.getPRJ_CODE().split(","); 
 		
 		project.setPRJ_CODE(tmpPrjCodeArr[0]);
-		projectService.modify(project);
+		projectService.modify(Integer.parseInt(project.getPRJ_CODE()), project);
 		
 		rttr.addAttribute("page", criteria.getPage());
 		rttr.addAttribute("perPageNum", criteria.getPerPageNum());

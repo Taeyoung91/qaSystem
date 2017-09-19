@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../include/header.jsp" %>
+<%@ include file="../include/header.jspf" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,6 +17,12 @@
 <title>Login</title>
 </head>
 <body>
+	<script>
+		var result = '${msg}';
+		if (result == 'FAIL') {
+			alert("ID 또는 비밀번호를 확인해주세요");
+		}
+	</script>
 	<div class="jumbotron text-center">
 		<h1>LOGIN</h1>
 	</div>

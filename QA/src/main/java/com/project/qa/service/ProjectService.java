@@ -12,7 +12,7 @@ public interface ProjectService {
 	
 	public Project read(int PRJ_CODE) throws Exception;
 	
-	public void modify(Project project) throws Exception;
+	public void modify(int PRJ_CODE, Project project) throws Exception;
 	
 	public void remove(int PRJ_CODE) throws Exception;
 	

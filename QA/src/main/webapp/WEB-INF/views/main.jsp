@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ include file="include/header.jsp"%>
+<%@ include file="include/header.jspf"%>
 <html>
 <head>
 <meta name="qaport" content="width=device-width,initial-scale=1">
@@ -69,8 +69,7 @@
 			<c:forEach items="${list}" var="project">
 				<tr>
 					<td>${project.PRJ_CODE}</td>
-					<td><a
-						href='/project/read${pageMaker.makeSearch(pageMaker.criteria.page)}&PRJ_CODE=${project.PRJ_CODE}'>${project.PRJ_NAME}</a></td>
+					<td><a href='/project/read${pageMaker.makeSearch(pageMaker.criteria.page)}&PRJ_CODE=${project.PRJ_CODE}'>${project.PRJ_NAME}</a></td>
 					<td>${project.PM}</td>
 					<td>${project.CLIENT}</td>
 					<td>${project.START_DATE}</td>

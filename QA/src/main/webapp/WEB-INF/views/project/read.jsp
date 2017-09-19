@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@include file="../include/header.jsp"%>
+<%@include file="../include/header.jspf"%>
 <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"
 	type="text/css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	
 <section class="content">
 	<div class="row">
 		<div class="col-md-12">
@@ -87,7 +90,6 @@
             		<col width="8%" />
             		<col width="*" />
             		<col width="7%" />
-            		<col width="7%" />
             		<col width="8%" />
             		<col width="8%" />
             		<col width="8%" />
@@ -102,7 +104,6 @@
 					<th scope="col">기능명</th>
 					<th scope="col">시험항목</th>
 					<th scope="col">시험내용</th>
-					<th scope="col">최초작성자</th>
 					<th scope="col">최종수정자</th>
 					<th scope="col">계획일</th>
 					<th scope="col">시험일</th>
@@ -132,12 +133,11 @@
 					<td>${testCase.FUNC_NAME}</td>
 					<td>${testCase.TC_NAME}</td>
 					<td>${testCase.CONTENTS}</td>
-					<td>${testCase.TC_WRITER}</td>
 					<td>${testCase.UPDT_USER }</td>
 					<td>${testCase.TEST_PLAN}</td>
 					<td>${testCase.TEST_DATE}</td>
-					<td>${testCase.WR_DATE}</td>
 					<td>${testCase.UPDT_DATE}</td>
+					<td>${testCase.WR_DATE}</td>
 					<c:if test="${testCase.STATE == 1}">
 						<td>일반</td>
 					</c:if>
@@ -171,8 +171,6 @@
 	</div>
 </section>
 
-
-
 <!-- MODAL -->
 
 <div class="modal fade" id="addTestCaseModal" role="dialog">
@@ -198,16 +196,40 @@
 					<input type="hidden" id="keyword" name="keyword"
 						value="${criteria.keyword}">
 					<div class="form-group">
+						<label for="funcNo"> <span
+							class="glyphicon glyphicon-pushpin"></span>&nbsp;기능No
+						</label> <input type="text" class="form-control" id="FUNC_NO"
+							name="FUNC_NO" placeholder="INSERT FUNCTION NUMBER">
+					</div>
+					<div class="form-group">
+						<label for="funcName"> <span
+							class="glyphicon glyphicon-pushpin"></span>&nbsp;기능명
+						</label> <input type="text" class="form-control" id="FUNC_NAME"
+							name="FUNC_NAME" placeholder="INSERT FUNCTION NAME">
+					</div>
+					<div class="form-group">
 						<label for="tcName"> <span
-							class="glyphicon glyphicon-pushpin"></span>&nbsp;NAME
+							class="glyphicon glyphicon-pushpin"></span>&nbsp;시험항목
 						</label> <input type="text" class="form-control" id="TC_NAME"
-							name="TC_NAME" placeholder="INSERT CASE NAME">
+							name="TC_NAME" placeholder="INSERT TEST NAME">
 					</div>
 					<div class="form-group">
 						<label for="contents"> <span
-							class="glyphicon glyphicon-pushpin"></span>&nbsp;CONTENTS
+							class="glyphicon glyphicon-pushpin"></span>&nbsp;시험내용
 						</label> <input type="text" class="form-control" id="CONTENTS"
 							name="CONTENTS" placeholder="INSERT CONTENTS">
+					</div>
+					<div class="form-group">
+						<label for="testPlan"> <span
+							class="glyphicon glyphicon-pushpin"></span>&nbsp;계획일
+						</label> <input type="text" class="form-control date" id="TEST_PLAN"
+							name="TEST_PLAN" placeholder="INSERT TEST PLAN">
+					</div>
+					<div class="form-group">
+						<label for="testDate"> <span
+							class="glyphicon glyphicon-pushpin"></span>&nbsp;시험일
+						</label> <input type="text" class="form-control date" id="TEST_DATE"
+							name="TEST_DATE" placeholder="INSERT TEST DATE">
 					</div>
 					<button type="submit" class="btn btn-block btn-success">
 						SUBMIT <span class="glyphicon glyphicon-ok"></span>
@@ -315,6 +337,10 @@
 			$("#addTestCaseModal").modal();
 			});
 		
+		$("#table").on("click", "span", function(){
+			$(this).closest("tr").remove(); 
+			});
+		
 		$("#modifyTcBtn").on("click", function() {
 			formObj.attr("action", "/project/testCase/modify");
 			formObj.attr("method", "get");
@@ -362,7 +388,11 @@
 			$('input[name="state"]').val("4");
 			$("#requestTcStateModal").modal();
 			});
+		
+		$(".date").datepicker({
+			dateFormat : 'yy-mm-dd'
+			});
 		});
-	
+		
 </script>
 

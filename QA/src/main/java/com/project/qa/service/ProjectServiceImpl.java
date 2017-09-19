@@ -5,8 +5,11 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.project.qa.controller.ProjectController;
 import com.project.qa.dao.ProjectDao;
 import com.project.qa.domain.Criteria;
 import com.project.qa.domain.Project;
@@ -15,6 +18,8 @@ import com.project.qa.domain.SearchCriteria;
 @Service
 public class ProjectServiceImpl implements ProjectService{
 
+	private static final Logger logger = LoggerFactory.getLogger(ProjectServiceImpl.class);
+	
 	@Inject
 	private ProjectDao projectDao;
 	
@@ -25,11 +30,12 @@ public class ProjectServiceImpl implements ProjectService{
 
 	@Override
 	public Project read(int PRJ_CODE) throws Exception {
+		logger.info("--------Read Project-------");
 		return projectDao.selectProject(PRJ_CODE);
 	}
 
 	@Override
-	public void modify(Project project) throws Exception {
+	public void modify(int PRJ_CODE, Project project) throws Exception {
 		projectDao.update(project);
 	}
 
@@ -56,6 +62,7 @@ public class ProjectServiceImpl implements ProjectService{
 
 	@Override
 	public List<Project> listSearchCriteria(SearchCriteria criteria) throws Exception {
+		logger.info("--------ListAll-------");
 		return projectDao.listSearch(criteria);
 	}
 

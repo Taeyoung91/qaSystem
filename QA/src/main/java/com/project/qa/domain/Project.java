@@ -6,7 +6,7 @@ public class Project {
 
 	private String PRJ_CODE;
 	private String PRJ_NAME;
-	private int PM;
+	private String PM;
 	private String CLIENT;
 	private String ATT_USER;
 	private String START_DATE;
@@ -30,11 +30,11 @@ public class Project {
 		PRJ_NAME = pRJ_NAME;
 	}
 
-	public int getPM() {
+	public String getPM() {
 		return PM;
 	}
 
-	public void setPM(int pM) {
+	public void setPM(String pM) {
 		PM = pM;
 	}
 

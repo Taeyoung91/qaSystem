@@ -29,7 +29,6 @@ public class ProjectDaoTest {
 		Project project = new Project();
 		
 		project.setPRJ_NAME("Project1");
-		project.setPM(1);
 		project.setCLIENT("넥스젠");
 		
 		projectDao.create(project);
